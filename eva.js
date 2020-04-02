@@ -1,8 +1,39 @@
-// Exercice 1 - Total d'une commande -- En cours
+// Exercice 1 - Total d'une commande -- Ok
+function calcul() {
+    var prix = parseInt(prompt("Saississez le prix"));
+    var qte = parseInt(prompt("Saississez la quantité"));
+    var tot = prix * qte;
+    return tot;
+}
 
-/*var PU = parseInt(prompt("Saississez le prix du produit: "));
-var QTECOM = parseInt(prompt("Saississez la quantité: "));
-*/
+function remise(tot) {
+    if (tot >= 100 && tot <= 200) {
+        tot = tot * 0.95;
+        console.log(tot);
+    }
+    else if (tot > 200) {
+        tot = tot * 0.90;
+        console.log(tot);
+    }
+    return tot;
+}
+function fraisDePort(tot) {
+    var port = ((2 * tot) / 100)
+        if (port < 6) {
+        return 6;
+    }
+    if (tot > 500) {
+        return 0;
+    }
+    return port;
+}
+function coutTotal() {
+    var tot = calcul();
+    var rem = remise(tot);
+    var frais = fraisDePort(tot);
+    console.log(remise(tot) + fraisDePort(tot));
+}
+
 
 // Exercice 2 - Somme des entiers inférieurs à N -- Ok
 function somme() {
@@ -27,19 +58,41 @@ function moyenne() {
     console.log(Math.min(...myTableau))
 }
 
-// Exercice 4 - Calcul du nombre de jeunes, de moyens et de vieux -- En cours
-function releve() {
-    var myTableau = [10, 15, 20, 25, 27, 35, 42, 48, 56, 75];
-    function jeune(value) {
-        return value < 20;
+// Exercice 4 - Calcul du nombre de jeunes, de moyens et de vieux -- Ok
+function Recensement() {
+    var tab = [];
+    do {
+        var ajoutAge = parseInt(prompt("Ajouter votre Age"));
+        tab.push(ajoutAge);
+        console.log(ajoutAge);
+        console.log(tab);
+    } while (ajoutAge < 100);
+
+    var classe = window.prompt("Quel tranche d'âge souhaitez-vous?");
+    if (classe == "jeune") {
+        var tab = tab.filter(jeune);
+        function jeune(value) {
+            return value < 20;
+        }
+        console.log(tab);
     }
-    function moyen(value) {
-        return value >= 20 && value <= 40;
+    else if (classe == "moyen") {
+        var tab = tab.filter(moyen);
+        function moyen(value) {
+            return value >= 20 && value <= 40;
+        }
+        console.log(tab);
     }
-    function vieux(value) {
-        return value > 40;
+    else if (classe == "vieux") {
+        var tab = tab.filter(vieux);
+        function vieux(value) {
+            return value > 40;
+        }
+        console.log(tab);
     }
-    console.log(myTableau)
+    else {
+        console.log("Je n'ai pas compris votre demande");
+    }
 }
 
 // Exercice 5 - Table de multiplication -- Ok
@@ -50,22 +103,22 @@ function TableMultiplication(value) {
     }
 }
 
-// Exercice 6 - Recherche d'un prénom
-// var tab = ["Audrey", "Aurélien", "Flavien", "Jérémy", "Laurent", "Melik", "Nouara", "Salem", "Samuel", "Stéphane"];
-// console.log(tab)
-// var rechercher = prompt("Quels noms recherchez-vous? ")
-// console.log(tab.includes(rechercher))
-// if (rechercher) {
-//     var ajout = tab.push(" ");
-//     var sup = tab.splice(rechercher, 1)
-// }
-// console.log(tab)
-
-function rechercher (prenom) {
-    var prenom = prompt("Quels noms recherchez-vous?")
-    return prenom
+//Exercice 6 - Recherche d'un prénom -- Ok
+function Recherche() {
+    var tab = ["Audrey", "Aurélien", "Flavien", "Jérémy", "Laurent", "Melik", "Nouara", "Salem", "Samuel", "Stéphane"];
+    console.log(tab)
+    var rechercher = prompt("Quels noms recherchez-vous? ")
+    var pos = tab.indexOf(rechercher);
+    if (pos) {
+        var removedItem = tab.splice(pos, 1);
+        var ajout = tab.push(" ");
+        console.log(tab)
+    }
+    else {
+        console.log("Je n'ai pas trouvé le nom");
+    }
 }
-var tab = ["Audrey", "Aurélien", "Flavien", "Jérémy", "Laurent", "Melik", "Nouara", "Salem", "Samuel", "Stéphane"].filter(!rechercher);
+
 
 // Exercice 7 - vérification d'un formulaire
 // Voir jarditou
